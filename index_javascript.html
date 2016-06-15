@@ -157,6 +157,16 @@ function selectColor(el){
     ctx.strokeStyle = color;
 }
 
+function saveSignature(postURL){
+  var signature = canvas.toDataURL();
+  var sigForm = $('<form></form>');
+  sigForm.attr("method","post");
+  sigForm.attr("action".postURL);
+  sigForm.append($("<input></input>").attr("type","hidden").attr("name","signature").attr("value",signature));
+  $(document.body).append(sigForm);
+  sigForm.submit();
+}
+
 // prototype to	start drawing on touch using canvas moveTo and lineTo
 var drawTouch = function() {
 	var start = function(e) {
